@@ -1,81 +1,47 @@
-.container {
-    margin: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .leaderboard-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-  }
-  
-  .leaderboard-table th, .leaderboard-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .leaderboard-table th {
-    background-color: #f2f2f2;
-  }
-  
-  .grid {
-    display: grid;
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  
-  .bg-white {
-    background-color: white;
-  }
-  
-  .bg-blue-500 {
-    background-color: #3b82f6;
-  }
-  
-  .bg-red-500 {
-    background-color: #ef4444;
-  }
-  
-  .text-white {
-    color: white;
-  }
-  
-  .text-blue-500 {
-    color: #3b82f6;
-  }
-  
-  .p-2 {
-    padding: 0.5rem;
-  }
-  
-  .p-4 {
-    padding: 1rem;
-  }
-  
-  .mb-4 {
-    margin-bottom: 1rem;
-  }
-  
-  .font-bold {
-    font-weight: bold;
-  }
-  
-  .text-2xl {
-    font-size: 1.5rem;
-  }
-  
-  .text-lg {
-    font-size: 1.125rem;
-  }
-  
-  .border {
-    border: 1px solid #ddd;
-  }
-  
-  .min-w-full {
-    min-width: 100%;
-  }
-  
+/* globals.css */
+/* Add Tailwind CSS styles */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add custom styles */
+.input {
+  @apply w-full px-4 py-2 transition duration-300 ease-in-out border border-blue-500 rounded;
+}
+
+.input:focus {
+  @apply shadow-sm outline-none ring-blue-500;
+}
+
+.button {
+  @apply px-4 py-2 text-white transition duration-300 ease-in-out bg-blue-500 rounded cursor-pointer;
+}
+
+.button:hover {
+  @apply bg-blue-600;
+}
+
+.button-red {
+  @apply px-4 py-2 text-white transition duration-300 ease-in-out bg-red-500 rounded cursor-pointer;
+}
+
+.button-red:hover {
+  @apply bg-red-600;
+}
+
+.table {
+  @apply w-full border-collapse;
+}
+
+.table th,
+.table td {
+  @apply px-4 py-2 border border-gray-300;
+}
+
+.table th {
+  @apply font-semibold bg-gray-100;
+}
+
+.table tr:hover {
+  @apply bg-gray-50;
+}

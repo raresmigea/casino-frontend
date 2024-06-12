@@ -44,18 +44,18 @@ const Leaderboard: React.FC = () => {
 
   return (
     <div className="container p-4 mx-auto">
-      <h1 className="mb-4 text-2xl font-bold">Casino Leaderboard</h1>
+      <h1 className="mb-4 text-3xl font-bold text-center">Casino Leaderboard</h1>
       <input 
         type="text" 
         placeholder="Search" 
         value={search} 
         onChange={handleSearch} 
-        className="p-2 mb-4 border"
+        className="mb-4 input"
       />
-      <button onClick={handleSort} className="p-2 mb-4 text-white bg-blue-500">
+      <button onClick={handleSort} className="mb-4 button">
         Sort by Wins ({sortOrder})
       </button>
-      <table className="min-w-full bg-white">
+      <table className="table">
         <thead>
           <tr>
             <th className="py-2">Name</th>
@@ -65,13 +65,13 @@ const Leaderboard: React.FC = () => {
         </thead>
         <tbody>
           {filteredUsers.map(user => (
-            <tr key={user.id} className="text-center">
+            <tr key={user.id} className="text-center hover:bg-gray-100">
               <td className="py-2">{user.name}</td>
               <td className="py-2">{user.wins}</td>
               <td className="py-2">
                 <button 
                   onClick={() => handleDelete(user.id)} 
-                  className="p-2 text-white bg-red-500"
+                  className="button-red"
                 >
                   Delete
                 </button>
