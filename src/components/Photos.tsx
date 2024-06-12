@@ -1,32 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent } from 'react';
 import axios from 'axios';
 
-const Photos = () => {
-  const [photos, setPhotos] = useState([]);
-  const [search, setSearch] = useState('');
-  const [sortOption, setSortOption] = useState('');
+interface Photo {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+}
+
+const Photos: React.FC = () => {
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  const [search, setSearch] = useState<string>('');
+  const [sortOption, setSortOption] = useState<string>('');
 
   useEffect(() => {
     const fetchPhotos = async () => {
-      const { data } = await axios.get('https://jsonplaceholder.typicode.com/photos');
+      const { data } = await axios.get<Photo[]>('https://jsonplaceholder.typicode.com/photos');
       setPhotos(data);
     };
     fetchPhotos();
   }, []);
 
-  const handleSearch = (event) => {
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: number) => {
     setPhotos(photos.filter(photo => photo.id !== id));
   };
 
-  const handleSort = (event) => {
+  const handleSort = (event: ChangeEvent<HTMLSelectElement>) => {
     setSortOption(event.target.value);
   };
 
-  const getSortedPhotos = () => {
+  const getSortedPhotos = (): Photo[] => {
     let sortedPhotos = [...photos];
     if (sortOption === 'title') {
       sortedPhotos.sort((a, b) => a.title.localeCompare(b.title));

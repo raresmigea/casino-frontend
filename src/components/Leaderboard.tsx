@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent } from 'react';
 import axios from 'axios';
 
-const Leaderboard = () => {
-  const [users, setUsers] = useState([]);
-  const [search, setSearch] = useState('');
-  const [sortOrder, setSortOrder] = useState('desc');
+interface User {
+  id: number;
+  name: string;
+  wins: number;
+}
+
+const Leaderboard: React.FC = () => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [search, setSearch] = useState<string>('');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -14,7 +20,7 @@ const Leaderboard = () => {
     fetchUsers();
   }, []);
 
-  const handleSearch = (event) => {
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
     setSearch(event.target.value);
   };
 
@@ -28,7 +34,7 @@ const Leaderboard = () => {
     setUsers(sortedUsers);
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = (id: number) => {
     setUsers(users.filter(user => user.id !== id));
   };
 
