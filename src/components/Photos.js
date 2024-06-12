@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import '../styles/globals.css';
+import '../styles/globals.css';
 
 const Photos = () => {
   const [photos, setPhotos] = useState([]);
