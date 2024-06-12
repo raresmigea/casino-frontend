@@ -39,3 +39,6 @@ The application will start in development mode and will be accessible at http://
 - Tailwind CSS
 - Axios
 
+<img width="1345" alt="Screenshot 2024-06-12 at 06 19 12" src="https://github.com/raresmigea/casino-frontend/assets/57077559/70600d71-6e91-41c1-98e6-9ca6649240b4">
+
+
