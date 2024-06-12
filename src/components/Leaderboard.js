@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-// import '../styles/globals.css';
 
 const Leaderboard = () => {
   const [users, setUsers] = useState([]);
@@ -38,16 +37,16 @@ const Leaderboard = () => {
   );
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Casino Leaderboard</h1>
+    <div className="container p-4 mx-auto">
+      <h1 className="mb-4 text-2xl font-bold">Casino Leaderboard</h1>
       <input 
         type="text" 
         placeholder="Search" 
         value={search} 
         onChange={handleSearch} 
-        className="border p-2 mb-4"
+        className="p-2 mb-4 border"
       />
-      <button onClick={handleSort} className="bg-blue-500 text-white p-2 mb-4">
+      <button onClick={handleSort} className="p-2 mb-4 text-white bg-blue-500">
         Sort by Wins ({sortOrder})
       </button>
       <table className="min-w-full bg-white">
@@ -66,7 +65,7 @@ const Leaderboard = () => {
               <td className="py-2">
                 <button 
                   onClick={() => handleDelete(user.id)} 
-                  className="bg-red-500 text-white p-2"
+                  className="p-2 text-white bg-red-500"
                 >
                   Delete
                 </button>
