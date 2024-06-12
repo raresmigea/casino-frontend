@@ -4,6 +4,7 @@ import axios from 'axios';
 const Photos = () => {
   const [photos, setPhotos] = useState([]);
   const [search, setSearch] = useState('');
+  const [sortOption, setSortOption] = useState('');
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -21,7 +22,21 @@ const Photos = () => {
     setPhotos(photos.filter(photo => photo.id !== id));
   };
 
-  const filteredPhotos = photos.filter(photo =>
+  const handleSort = (event) => {
+    setSortOption(event.target.value);
+  };
+
+  const getSortedPhotos = () => {
+    let sortedPhotos = [...photos];
+    if (sortOption === 'title') {
+      sortedPhotos.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortOption === 'id') {
+      sortedPhotos.sort((a, b) => a.id - b.id);
+    }
+    return sortedPhotos;
+  };
+
+  const filteredPhotos = getSortedPhotos().filter(photo =>
     photo.title.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -35,6 +50,11 @@ const Photos = () => {
         onChange={handleSearch} 
         className="p-2 mb-4 border"
       />
+      <select onChange={handleSort} className="p-2 mb-4 border">
+        <option value="">Sort By</option>
+        <option value="title">Title</option>
+        <option value="id">ID</option>
+      </select>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {filteredPhotos.slice(0, 1000).map(photo => (
           <div key={photo.id} className="p-2 border">
