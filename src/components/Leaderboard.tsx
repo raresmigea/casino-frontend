@@ -44,7 +44,9 @@ const Leaderboard: React.FC = () => {
 
   return (
     <div className="container p-4 mx-auto">
-      <h1 className="mb-4 text-3xl font-bold text-center">Casino Leaderboard</h1>
+     <h1 className="justify-center mb-4 text-center"  style={{ fontSize: '2.5rem', fontWeight: '800', color: 'black'}}>Casino Leaderboard</h1>
+
+
       <input 
         type="text" 
         placeholder="Search" 
